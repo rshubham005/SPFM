@@ -1,0 +1,13 @@
+# Netlify: Next.js is served by Netlify's Next.js runtime (plugin below).
+# Leave "Publish directory" as .next in the Netlify UI too, and do not use
+# drag-and-drop deploys: this app needs Netlify's build step.
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

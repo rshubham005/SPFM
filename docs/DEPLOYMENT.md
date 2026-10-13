@@ -11,7 +11,20 @@ Recommended setup, since Shield already uses Microsoft Entra:
 Samuel creates the Azure subscription and adds the developer as Contributor on
 an `spfm` resource group. Hosting is billed to Shield by Microsoft.
 
-## Frontend
+## Preview hosting on Netlify
+
+For showing the preview (sample data in the browser), Netlify works with no
+extra setup beyond `netlify.toml` in the repository:
+
+- Deploy from Git (Netlify → Add new site → Import from GitHub). Drag-and-drop
+  deploys don't work for this app: it needs Netlify's build step.
+- Build command `npm run build`, publish directory `.next` (both already set in
+  `netlify.toml`, which overrides the Netlify UI).
+- Add any `NEXT_PUBLIC_*` settings under Site configuration → Environment
+  variables, then redeploy.
+- For Entra sign-in on Netlify, add the Netlify address as an SPA redirect URI.
+
+## Frontend on Azure
 
 The `NEXT_PUBLIC_*` values are built into the app, so set them **before**
 building (see `.env.example`), with the live addresses.
